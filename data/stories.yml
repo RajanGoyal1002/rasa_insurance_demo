@@ -1,0 +1,102 @@
+version: "2.0"
+stories:
+- story: member wants to know the status of a claim; prompt for claim
+  steps:
+  - intent: claim_status
+  - slot_was_set:
+    - claim_id: null
+  - action: utter_ask_knows_claim_id
+- story: if member knows claim retrieve get that claim
+  steps:
+  - action: utter_ask_knows_claim_id
+  - intent: affirm
+  - action: utter_enter_id
+  - action: get_claim_form
+  - active_loop: get_claim_form
+  - active_loop: null
+  - action: action_claim_status
+  - action: utter_anything_else
+- story: if member doesn't know claim
+  steps:
+  - action: utter_ask_knows_claim_id
+  - intent: deny
+  - action: utter_deny
+  - action: utter_goodbye
+- story: member wants to get a quote for an insurance
+  steps:
+  - intent: quote
+  - slot_was_set:
+    - insurance_type: null
+  - action: utter_insurance_type
+- story: member wants to get a quote for health insurance
+  steps:
+  - action: utter_insurance_type
+  - intent: quote
+    entities:
+    - insurance_type: health
+  - action: utter_health_details
+  - action: get_health_quote_form
+  - active_loop: get_health_quote_form
+  - active_loop: null
+  - action: action_quote_health
+  - action: utter_anything_else
+- story: member wants to get a quote for life insurance
+  steps:
+  - action: utter_insurance_type
+  - intent: quote
+    entities:
+    - insurance_type: life
+  - action: utter_life_details
+  - action: get_life_quote_form
+  - active_loop: get_life_quote_form
+  - active_loop: null
+  - action: action_quote_life
+  - action: utter_anything_else
+- story: if member wants to get some other information
+  steps:
+  - action: utter_anything_else
+  - intent: affirm
+  - action: utter_greet
+  - intent: deny
+  - action: utter_goodbye
+- story: if member do not want to ask anything else
+  steps:
+  - action: utter_anything_else
+  - intent: deny
+  - action: utter_goodbye
+- story: Story from Conversation ID b9d1b17a4b5e442bb1968c0e35c35bda
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: quote
+  - action: utter_insurance_type
+  - intent: quote
+    entities:
+    - insurance_type: health
+  - slot_was_set:
+    - insurance_type: health
+  - action: utter_health_details
+  - action: get_health_quote_form
+  - active_loop: get_health_quote_form
+  - slot_was_set:
+    - requested_slot: age_quote
+  - intent: quote
+  - action: utter_insurance_type
+  - intent: quote
+    entities:
+    - insurance_type: health
+  - slot_was_set:
+    - insurance_type: health
+  - action: utter_health_details
+  - action: get_health_quote_form
+  - slot_was_set:
+    - requested_slot: age_quote
+  - intent: quote
+  - slot_was_set:
+    - insurance_type: health
+  - slot_was_set:
+    - insurance_type: health
+  - action: utter_ask_get_health_quote_form_gender_quote
+  - action: get_health_quote_form
+  - slot_was_set:
+    - requested_slot: age_quote

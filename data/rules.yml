@@ -1,0 +1,22 @@
+version: "2.0"
+rules:
+- rule: Show greeting options whenever user says hello, hi or heyo
+  steps:
+  - intent: greet
+  - action: utter_greet
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+- rule: Ask knows claim if no loop
+  condition:
+  - active_loop: null
+  steps:
+  - intent: claim_status
+  - slot_was_set:
+    - claim_id: null
+  - action: utter_ask_knows_claim_id

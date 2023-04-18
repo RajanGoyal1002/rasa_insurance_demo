@@ -1,0 +1,257 @@
+version: "2.0"
+nlu:
+- intent: claim_status
+  examples: |
+    - what is the status of my claim?
+    - claim status
+    - has my claim been processed?
+    - tell me about my claim
+    - has my claim been paid?
+    - was my claim paid?
+    - what do i owe on my claim?
+    - i want to check the status of my claim
+    - what is the status of claim [X123456](claim_id)
+    - has claim [YY4567890](claim_id) been paid?
+    - check the status of claim [ZZ643421](claim_id)
+    - check the status of a claim
+    - I need to check my claim status
+    - check claim status
+    - view my claims
+    - show my claims
+    - view my recent claims
+    - show me my claims
+    - what is my claim history
+    - get claim status
+    - show some claims
+    - check claim id 748536
+    - check the status of claim [NC239062](claim_id)
+    - has my claim been submitted?
+    - what is the status of claim [XX123456](claim_id)[XX123456](claim_id)
+    - check up on a claim
+    - what is the status of claim [XX123456](claim_id)
+    - what is the status of claim [NC709186](claim_id)[NC709186](claim_id)?
+    - what is the status of my recent claim?
+    - check the status of claim [NC339723](claim_id)[NC339723](claim_id)
+    - check status of my claim
+    - check on my claim status
+- intent: claim_balance
+  examples: |
+    - what is the balance of my claim?
+    - claim balance
+    - tell me about my claim balance
+    - has my claim balance been paid?
+    - was my claim balance paid?
+    - what do i owe on my claim balance?
+    - i want to check balance of my claim
+    - what is the balance of claim [X123456](claim_id)
+    - has claim  balance of claim [YY4567890](claim_id) been paid?
+    - check the balance of claim [ZZ643421](claim_id)
+    - check the balance of a claim
+    - I need to check my claim balance
+    - check claim balance
+    - view my claim balance
+    - show my claim balance
+    - show me my claim balance
+    - what is my claim balance history
+    - get claim balance
+    - show some claim balance
+    - check balance of claim id 748536
+    - check the balance of claim [NC239062](claim_id)
+    - has my claim balance been submitted?
+    - what is the balance of claim [XX123456](claim_id)[XX123456](claim_id)
+    - check up on a claim balance
+    - what is the balance of claim [XX123456](claim_id)
+    - what is the balance of claim [NC709186](claim_id)[NC709186](claim_id)?
+    - what is the balance of my recent claim?
+    - check the balance of claim [NC339723](claim_id)[NC339723](claim_id)
+    - check balance of my claim
+    - check on my claim balance
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hi ther
+    - hi there
+    - heyo
+    - howdy
+    - good mrng
+    - good eve
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - ciao
+    - thank you too
+    - oh that's nice thank you
+    - byeee
+    - adios
+    - cya
+    - see ya later
+    - good bye
+    - have a good one
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yes obviously
+    - yup
+    - yes please
+    - yeah
+    - yes plz
+    - sure
+    - Ok
+    - cool
+    - Yes
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nope
+    - no thank you
+    - nah
+    - No
+    - i doubt it
+    - No thanks!
+    - ni
+    - not right now
+    - no thanks
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - what else can you do?
+- intent: quote
+  examples: |
+    - What will be the premium of [health](insurance_type) insurance for age [18]{"entity":"age"} years and gender [male](gender)?
+    - What is the the premium of [health](insurance_type) insurance for a [21]{"entity":"age"} years old [female](gender)?
+    - What is the the premium of [health](insurance_type) insurance for a [22]{"entity":"age"} years old [male](gender)?
+    - What will be the premium of [health](insurance_type) insurance for age [19]{"entity":"age"} years and gender [male](gender)?
+    - What will be the premium of [health](insurance_type) insurance for age [20]{"entity":"age"} years and gender [male](gender)?
+    - What is the the premium of [health](insurance_type) insurance for a [11]{"entity":"age"} years old [female](gender)?
+    - What is the the premium of [health](insurance_type) insurance for a [12]{"entity":"age"} years old [male](gender)?
+    - premium of [health](insurance_type) insurance for age [31]{"entity":"age"} years and gender [male](gender)?
+    - premium of [health](insurance_type) insurance for age [41]{"entity":"age"} years and gender [male](gender)?
+    - premium of [health](insurance_type) insurance for age [44]{"entity":"age"} years and gender [male](gender)?
+    - premium of [health](insurance_type) insurance for a [34]{"entity":"age"} years old [female](gender)?
+    - premium of [health](insurance_type) insurance for a [29]{"entity":"age"} years old [male](gender)?
+    - premium of [health](insurance_type) insurance for age [29]{"entity":"age"} years and gender [male](gender)?
+    - How much premium of [health](insurance_type) insurance I have to pay for age [9]{"entity":"age"} years and gender [male](gender)?
+    - How much is the premium of [health](insurance_type) insurance I have to pay for age [12]{"entity":"age"} years and gender [male](gender)?
+    - [health](insurance_type) insurance premium I have to pay for age [36]{"entity":"age"} years and gender [female](gender)?
+    - [health](insurance_type) insurance premium I have to pay for age [33]{"entity":"age"} years and gender [male](gender)?
+    - [health](insurance_type) insurance premium for age [32]{"entity":"age"} years and gender [male](gender)?
+    - [health](insurance_type) insurance premium for age [22]{"entity":"age"} years and gender [female](gender)?
+    - Can you tell me the premium of [health](insurance_type) insurance for a [51]{"entity":"age"} years old [female](gender)?
+    - Can you tell [health](insurance_type) insurance premium for a [44]{"entity":"age"} years old [female](gender)?
+    - Can you tell [health](insurance_type) insurance premium for a [38]{"entity":"age"} years old [male](gender)?
+    - tell me the [health](insurance_type) insurance premium for a [27]{"entity":"age"} years old [female](gender)?
+    - tell me the premium of [health](insurance_type) insurance for a [17]{"entity":"age"} years old [female](gender)?
+    - Calculate premium of [health](insurance_type) insurance for a [26]{"entity":"age"} years old [female](gender)?
+    - Calculate [health](insurance_type) insurance premium for a [51]{"entity":"age"} years old [female](gender)?
+    - Calculate [health](insurance_type) insurance premium for a [female](gender) of age  [43]{"entity":"age"} years?
+    - Calculate [health](insurance_type) insurance premium for a [male](gender) of age  [23]{"entity":"age"} years?
+    - What will be  the quote of [health](insurance_type) insurance for age [27]{"entity":"age"} years and gender [male](gender)??
+    - What will be the quote of [health](insurance_type) insurance for a [12]{"entity":"age"} years old [male](gender)?
+    - Can I know the premium of [health](insurance_type) insurance for age [18]{"entity":"age"} years and gender [male](gender)?
+    - Can you tell me the premium of [health](insurance_type) insurance for a [51]{"entity":"age"} years old [female](gender)?
+    - How much premium of [health](insurance_type) insurance i have to pay for age [9]{"entity":"age"} years and gender [male](gender)?
+    - [health](insurance_type) insurance for [21 years] {"entity":"age"} old [female](gender)
+    - [health](insurance_type) insurance for of age [11 years] {"entity":"age"} and gender [male](gender)
+    - [health](insurance_type) insurance for of age [23 years] {"entity":"age"} and gender [male](gender)
+    - premium of [life](insurance_type) insurance for policy term [5]{"entity":"policy_term"} years,  age [18]{"entity":"age"} years and gender [male](gender).
+    - premium of [life](insurance_type) insurance for policy term [5]{"entity":"policy_term"} years, age [21]{"entity":"age"} years and gender [female](gender).
+    - premium of [life](insurance_type) insurance for policy term [10]{"entity":"policy_term"} years,  age [12]{"entity":"age"} years and gender [male](gender).
+    - premium of [life](insurance_type) insurance for policy term [10]{"entity":"policy_term"} years, age [42]{"entity":"age"} years and gender [female](gender).
+    - premium of [life](insurance_type) insurance for policy term [5]{"entity":"policy_term"} years,  age [53]{"entity":"age"} years and gender [male](gender).
+    - premium of [life](insurance_type) insurance for policy term [5]{"entity":"policy_term"} years, age [14]{"entity":"age"} years and gender [female](gender).
+    - premium of [life](insurance_type) insurance for policy term [10]{"entity":"policy_term"} years,  age [21]{"entity":"age"} years and gender [male](gender).
+    - premium of [life](insurance_type) insurance for policy term [10]{"entity":"policy_term"} years, age [65]{"entity":"age"} years and gender [female](gender).
+    - premium of [life](insurance_type) insurance for policy term [15]{"entity":"policy_term"} years,  age [18]{"entity":"age"} years and gender [male](gender).
+    - premium of [life](insurance_type) insurance for policy term [0]{"entity":"policy_term"} years, age [21]{"entity":"age"} years and gender [female](gender).
+    - premium of [life](insurance_type) insurance for policy term [25]{"entity":"policy_term"} years,  age [11]{"entity":"age"} years and gender [male](gender).
+    - premium of [life](insurance_type) insurance for policy term [20]{"entity":"policy_term"} years, age [42]{"entity":"age"} years and gender [female](gender).
+    - premium of [life](insurance_type) insurance for policy term [15]{"entity":"policy_term"} years,  age [53]{"entity":"age"} years and gender [male](gender).
+    - premium of [life](insurance_type) insurance for policy term [10]{"entity":"policy_term"} years, age [14]{"entity":"age"} years and gender [female](gender).
+    - premium of [life](insurance_type) insurance for policy term [15]{"entity":"policy_term"} years,  age [21]{"entity":"age"} years and gender [male](gender).
+    - premium of [life](insurance_type) insurance for policy term [20]{"entity":"policy_term"} years, age [31]{"entity":"age"} years and gender [female](gender).
+    - What will be the premium of [life](insurance_type) insurance for policy term [20]{"entity":"policy_term"} years, age [32]{"entity":"age"} years and gender [female](gender).
+    - What will be the quote of [life](insurance_type) insurance for policy term [20]{"entity":"policy_term"} years, age [33]{"entity":"age"} years and gender [female](gender).
+    - Can you tell me the premium of [life](insurance_type) insurance for policy term [20]{"entity":"policy_term"} years, age [43]{"entity":"age"} years and gender [female](gender)?
+    - How much premium of [life](insurance_type) insurance I have to pay if policy term [20]{"entity":"policy_term"} years, gender is [male](gender) and age is [11]{"entity":"age"} years?  
+    - Quote of [life](insurance_type) insurance for policy term [5]{"entity":"policy_term"} years,  age [21]{"entity":"age"} years and gender [male](gender).
+    - Premium of [life](insurance_type) insurance for policy term is [25]{"entity":"policy_term"} years of a [41]{"entity":"age"} years old [male](gender).
+    - policy term [25 years] {"entity":"policy_term"}, age is [18 years] {"entity":"age"} and  gender is [male](gender) 
+    - policy term [15 years] {"entity":"policy_term"}, age is [21 years] {"entity":"age"} and gender is [male](gender) 
+- synonym: auto
+  examples: |
+    - car
+    - automobile
+- synonym: WI
+  examples: |
+    - Wisconsin
+- synonym: MT
+  examples: |
+    - Montana
+- synonym: MI
+  examples: |
+    - Michigan
+- synonym: MD
+  examples: |
+    - Maryland
+- synonym: OH
+  examples: |
+    - Ohio
+- synonym: VT
+  examples: |
+    - Vermont
+- synonym: AZ
+  examples: |
+    - arizona
+- synonym: healh
+  examples: |
+    - healthcare
+    - health care
+- synonym: male
+  examples: |
+    - m
+    - Male
+    - M
+- synonym: female
+  examples: |
+    - f
+    - Female
+    - F
+- regex: claim_id
+  examples: |
+    - [a-z]{1,2}\d{5,7}
