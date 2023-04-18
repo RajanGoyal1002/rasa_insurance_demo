@@ -1,0 +1,200 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- claim_status:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- claim_balance:
+    use_entities: true
+- quote_health:
+    use_entities: true
+- quote:
+    use_entities: true
+entities:
+- claim_id
+- claim_balance
+- insurance_type
+- age
+- gender
+- policy_term
+slots:
+  claim_balance:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  claim_id:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  has_outstanding_balance:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  insurance_type:
+    type: rasa.shared.core.slots.CategoricalSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+    values:
+    - life
+    - health
+    - home
+    - vehicle
+  age_quote:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  gender_quote:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  policy_term_quote:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  premium_term_quote:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_ask_knows_claim_id:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Do you know the claim ID for which you want to check the Status?
+  utter_ask_knows_claim_id_balance:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Do you know the claim ID for which you want to check the Outstanding balance?
+  utter_enter_id:
+  - text: Please enter the claim id to continue.
+  utter_anything_else:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Is there anything else I can help you with?
+  utter_has_outstanding_balance:
+  - text: 'Claim {claim_id} has an outstanding balance of ${claim_balance}.'
+  utter_greet:
+  - buttons:
+    - payload: /claim_status
+      title: Check Claim Status
+    - payload: /quote
+      title: Get A Quote
+    text: Hello Sir, Do you want to check the claim status or get a new quote?
+  utter_has_no_balance:
+  - text: This claim has no outstanding balance.
+  utter_claim_detail:
+  - text: 'Claim ID: {claim_id}\nClaim Date: {claim_date}\nAmount Owed: {claim_balance}\nClaim Status: {claim_status}'
+  utter_health_quote_detail:
+  - text: 'Age: {age} \n Gender: {gender} \n Premium: {premium}'
+  utter_life_quote_detail:
+  - text: 'Age:{age}\nGender:{gender}\nPolicy_term:{policy_term}\nPremium: {premium}'
+  utter_claim_id_provided:
+  - text: Let me get the status for claim {claim_id}
+  utter_claim_id_balance_provided:
+  - text: Let me get the outstanding balance for claim {claim_id}
+  utter_deny:
+  - text: Claim Id is required to check the claim status or outstanding balance.
+  utter_goodbye:
+  - text: Okay. I'll be here to help you with all of your future insurance needs. Have a stupendous day!
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_insurance_type:
+  - buttons:
+    - payload: /quote{{"insurance_type":"health"}}
+      title: Health
+    - payload: /quote{{"insurance_type":"life"}}
+      title: Life
+    text: Please select the type of insurance
+  utter_health_details:
+  - text: Please provide the age and gender.
+  utter_life_details:
+  - text: Please provide the age, gender, policy term and premium paying term. policy term and premium paying term should be in multiples of 5. Policy term must be greater than premium paying term.
+  utter_ask_get_health_quote_form_age_quote:
+  - text: Enter your age.
+  utter_ask_get_health_quote_form_gender_quote:
+  - text: Enter your gender.
+  utter_ask_get_life_quote_form_age_quote:
+  - text: Enter your age.
+  utter_ask_get_life_quote_form_gender_quote:
+  - text: Enter your gender.
+  utter_ask_get_life_quote_form_policy_term_quote:
+  - text: Enter policy term.
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
+actions:
+- action_claim_status
+- action_check_claim_balance
+- action_quote_health
+- action_quote_life
+- validate_get_health_quote_form
+- validate_get_life_quote_form
+forms:
+  get_claim_form:
+    required_slots:
+      claim_id:
+      - entity: claim_id
+        type: from_text
+  get_health_quote_form:
+    required_slots:
+      age_quote:
+      - auto_fill: true
+        entity: age
+        initial_value: null
+        type: from_text
+      gender_quote:
+      - auto_fill: true
+        entity: gender
+        initial_value: null
+        type: from_text
+  get_life_quote_form:
+    required_slots:
+      age_quote:
+      - auto_fill: true
+        entity: age
+        initial_value: null
+        type: from_text
+      gender_quote:
+      - auto_fill: true
+        entity: gender
+        initial_value: null
+        type: from_text
+      policy_term_quote:
+      - auto_fill: true
+        entity: policy_term
+        initial_value: null
+        type: from_text
+e2e_actions: []
